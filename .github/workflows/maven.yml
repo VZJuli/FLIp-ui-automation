@@ -1,0 +1,28 @@
+name: FlipQA CI
+on:
+  push:
+    branches:
+      - master
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+     - name: Checkout repository
+       uses: actions/checkout@v4
+
+     - name: Set up JDK 25
+       uses: action/set-upjava@v4
+       with:
+              distribution: temurin
+              java-version: '25'
+
+     - name: Cache Maven packages
+       uses: action/cache@v4
+       with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+           ${{ runner.os }}-m2
+                  
+     - name: Run tests
+       run: mvn clean test
