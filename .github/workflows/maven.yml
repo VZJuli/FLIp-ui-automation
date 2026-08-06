@@ -11,13 +11,13 @@ jobs:
        uses: actions/checkout@v4
 
      - name: Set up JDK 25
-       uses: action/set-upjava@v4
+       uses: action/setup-java@v4
        with:
               distribution: temurin
               java-version: '25'
 
      - name: Cache Maven packages
-       uses: action/cache@v4
+       uses: actions/cache@v4
        with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
