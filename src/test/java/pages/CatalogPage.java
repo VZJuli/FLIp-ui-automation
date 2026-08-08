@@ -25,7 +25,7 @@ public class CatalogPage extends HeaderComponent {
     public boolean isCatalogOpened(){
         return driver.findElement(catalogOpened).isDisplayed();
     }
-    private final By booksCategory = By.xpath("//a[contains(@class,'content') and normalize-space()='Книги']");
+    private final By booksCategory = By.xpath("//a[contains(@class,'condent') and .//div[normalize-space()='Книги']]");
     public void hoverBooksCategory(){
        // WebElement books = driver.findElement(booksCategory);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -33,10 +33,10 @@ public class CatalogPage extends HeaderComponent {
         WebElement books = wait.until(ExpectedConditions.visibilityOfElementLocated(booksCategory));
         actions.moveToElement(books).perform();
     }
-    private final By fantasyCategory = By.xpath("//a[contains(@class,'content') and normalize-space()='Книги']");
+    private final By fantasyCategory = By.xpath("//a[@href='/catalog?subsection=134' and normalize-space()='Фантастика. Мистика']");
     public  void  clickFantasyCategory(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement fantasy = wait.until(ExpectedConditions.elementToBeClickable(fantasyCategory));
+        WebElement fantasy = wait.until(ExpectedConditions.visibilityOfElementLocated(fantasyCategory));
        // fantasy.click();
         actions.moveToElement(fantasy)
                 .click()

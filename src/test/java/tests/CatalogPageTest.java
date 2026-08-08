@@ -24,7 +24,7 @@ public class CatalogPageTest extends BaseTest {
         catalogPage.clickCatalogButton();
         Assert.assertTrue(catalogPage.isCatalogOpened());
     }
-    @Ignore
+    @Test
     public  void shouldOpenFantasyCategory()  {
         CatalogPage catalogPage = new CatalogPage(driver);
         catalogPage.clickCatalogButton();
