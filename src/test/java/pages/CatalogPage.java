@@ -45,6 +45,9 @@ public class CatalogPage extends HeaderComponent {
     }
     private final By productCard = By.xpath("//a[contains(.,'Когда родилась луна')]");
     public  void openProductCard(){
-        driver.findElement(productCard).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement product = wait.until(ExpectedConditions.elementToBeClickable(productCard));
+        //driver.findElement(productCard).click();
+        product.click();
     }
 }
